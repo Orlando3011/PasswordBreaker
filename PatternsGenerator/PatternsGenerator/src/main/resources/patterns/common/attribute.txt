@@ -1,1 +1,1 @@
-private $type$ $attributeName$
+private type name

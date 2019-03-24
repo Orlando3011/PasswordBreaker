@@ -1,5 +1,7 @@
 package PatternsGenerator.model.interfaces;
 
+import java.io.IOException;
+
 public interface SingletonGeneratorInterface {
-    String ToString();
+    String ToString() throws IOException;
 }

@@ -1,0 +1,19 @@
+    attributes
+
+    private static volatile patternName instance = null;
+
+    public static patternName getInstance() {
+        if (instance == null) {
+            synchronized (patternName.class) {
+                if (instance == null) {
+                    instance = new patternName();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private patternName() {
+    }
+
+}
