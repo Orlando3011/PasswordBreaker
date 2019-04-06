@@ -1,6 +1,10 @@
-package PatternsGenerator.model.classes;
+package PatternsGenerator.model.classes.singleton;
 
-import PatternsGenerator.model.interfaces.SingletonGeneratorInterface;
+import PatternsGenerator.model.classes.common.Attribute;
+import PatternsGenerator.model.classes.common.Getter;
+import PatternsGenerator.model.classes.common.Pattern;
+import PatternsGenerator.model.classes.common.Setter;
+import PatternsGenerator.model.interfaces.singleton.SingletonGeneratorInterface;
 import PatternsGenerator.services.FileIOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,6 +37,8 @@ public class SingletonGenerator implements SingletonGeneratorInterface {
         String SingletonTemplate = fileIOService.ReadFromFile("patterns/singleton/SingletonDeclaration.txt");
         SingletonTemplate = SingletonTemplate + (fileIOService.ReadFromFile("patterns/singleton/SingletonBaseCode.txt"));
         SingletonTemplate = SingletonTemplate.replaceAll("attributes", this.MakeListOfArguments());
+        SingletonTemplate = SingletonTemplate.replaceAll("getters", this.MakeListOfGetters());
+        SingletonTemplate = SingletonTemplate.replaceAll("setters", this.MakeListOfSetters());
         return SingletonTemplate;
     }
 
@@ -43,6 +49,28 @@ public class SingletonGenerator implements SingletonGeneratorInterface {
             listOfArguments.append("\n");
         }
         return listOfArguments.toString();
+    }
+
+    private String MakeListOfGetters() throws IOException {
+        StringBuilder listOfGetters = new StringBuilder();
+        for (Attribute attribute : this.attributes) {
+            Getter getter = new Getter(new FileIOService());
+            getter.setAttribute(attribute);
+            listOfGetters.append(getter.ToString());
+            listOfGetters.append("\n");
+        }
+        return listOfGetters.toString();
+    }
+
+    private String MakeListOfSetters() throws IOException {
+        StringBuilder listOfSetters = new StringBuilder();
+        for (Attribute attribute : this.attributes) {
+            Setter setter = new Setter(new FileIOService());
+            setter.setAttribute(attribute);
+            listOfSetters.append(setter.ToString());
+            listOfSetters.append("\n");
+        }
+        return listOfSetters.toString();
     }
 
     public Pattern getPattern() {

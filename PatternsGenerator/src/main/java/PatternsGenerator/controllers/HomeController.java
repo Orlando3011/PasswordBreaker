@@ -1,8 +1,8 @@
 package PatternsGenerator.controllers;
 
-import PatternsGenerator.model.classes.Attribute;
-import PatternsGenerator.model.classes.Pattern;
-import PatternsGenerator.model.classes.SingletonGenerator;
+import PatternsGenerator.model.classes.common.Attribute;
+import PatternsGenerator.model.classes.common.Pattern;
+import PatternsGenerator.model.classes.singleton.SingletonGenerator;
 import PatternsGenerator.services.FileIOService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

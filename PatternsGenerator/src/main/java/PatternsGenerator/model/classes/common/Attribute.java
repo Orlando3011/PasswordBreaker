@@ -1,6 +1,6 @@
-package PatternsGenerator.model.classes;
+package PatternsGenerator.model.classes.common;
 
-import PatternsGenerator.model.interfaces.AttributeInterface;
+import PatternsGenerator.model.interfaces.common.AttributeInterface;
 import PatternsGenerator.services.FileIOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,6 +12,8 @@ public class Attribute implements AttributeInterface {
     private String type;
     private String name;
     private FileIOService fileIOService;
+
+    public Attribute() {}
 
     @Autowired
     public Attribute(FileIOService fileIOService) {

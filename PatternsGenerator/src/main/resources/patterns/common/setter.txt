@@ -1,0 +1,3 @@
+    public void Setname(type name) {
+        this.name = name;
+    }

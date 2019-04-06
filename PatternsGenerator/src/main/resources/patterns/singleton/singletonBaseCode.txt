@@ -1,4 +1,4 @@
-    attributes
+attributes
 
     private static volatile patternName instance = null;
 
@@ -15,5 +15,8 @@
 
     private patternName() {
     }
+
+getters
+setters
 
 }

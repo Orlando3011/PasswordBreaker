@@ -1,4 +1,4 @@
-package PatternsGenerator.model.interfaces;
+package PatternsGenerator.model.interfaces.singleton;
 
 import java.io.IOException;
 

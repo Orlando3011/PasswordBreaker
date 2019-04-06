@@ -1,4 +1,4 @@
-package PatternsGenerator.model.interfaces;
+package PatternsGenerator.model.interfaces.common;
 
 import java.io.IOException;
 

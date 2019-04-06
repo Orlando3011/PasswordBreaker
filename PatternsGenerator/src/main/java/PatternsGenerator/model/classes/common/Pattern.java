@@ -1,4 +1,4 @@
-package PatternsGenerator.model.classes;
+package PatternsGenerator.model.classes.common;
 
 import org.springframework.stereotype.Component;
 
