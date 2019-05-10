@@ -1,0 +1,1 @@
+//This constructor ensures that default, argumentless, public constructor will not be created

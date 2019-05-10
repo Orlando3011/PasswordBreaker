@@ -1,4 +1,5 @@
-attributes
+creationInfo
+public final class patternName {
 
     private static volatile patternName instance = null;
 
@@ -13,10 +14,7 @@ attributes
         return instance;
     }
 
+privateConstructorComment
     private patternName() {
     }
-
-getters
-setters
-
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Pattern {
     private String name;
-    private String description;
+    private int version;
     private boolean areCommentsIncluded;
 
     public Pattern() {}
@@ -18,19 +18,19 @@ public class Pattern {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isAreCommentsIncluded() {
+    public boolean getAreCommentsIncluded() {
         return areCommentsIncluded;
     }
 
     public void setAreCommentsIncluded(boolean areCommentsIncluded) {
         this.areCommentsIncluded = areCommentsIncluded;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

@@ -1,0 +1,14 @@
+creationInfo
+public class patternName {
+
+privateConstructorComment
+    private patternName() {}
+
+    private final static class patternNameHolder {
+        private final static patternName instance = new patternName();
+    }
+
+    public final static patternName getInstance() {
+        return patternNameHolder.instance;
+    }
+}
