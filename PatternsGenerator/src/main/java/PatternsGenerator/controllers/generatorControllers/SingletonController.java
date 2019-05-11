@@ -1,4 +1,4 @@
-package PatternsGenerator.controllers;
+package PatternsGenerator.controllers.generatorControllers;
 
 import PatternsGenerator.model.classes.common.Pattern;
 import PatternsGenerator.model.classes.patternGenerator.SingletonGenerator;

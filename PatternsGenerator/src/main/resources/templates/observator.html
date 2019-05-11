@@ -3,17 +3,8 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>observator</title>
-        <script language="Javascript" >
-        function downloadDiv(filename, elementId, mimeType) {
-            var elementHtml = document.getElementById(elementId).innerHTML;
-            var link = document.createElement('a');
-            mimeType = mimeType || 'text/plain';
-
-            link.setAttribute('download', filename);
-            link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elementHtml));
-            link.click();
-        }
-</script>
+        <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+        <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
     </head>
 
     <body>
@@ -23,48 +14,75 @@
             <div class="container">
                 <p class="lead">Observator generator</p>
             </div>
-            <form action="observator" method="post">
+            <form class='needs-validation' action="observator" method="post" novalidate>
                 <div class="form-group row">
                     <div class="col">
                         <label for="className">Write name of Observator class</label>
-                        <input type="text" id="className" name="className" class="form-control" placeholder="observator class name">
+                        <input type="text" id="className" name="className" class="form-control" placeholder="observator class name" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
                         <label for="observatedName">Write name of Observated class</label>
-                        <input type="text" id="observatedName" name="observatedName" class="form-control" placeholder="observated class name">
+                        <input type="text" id="observatedName" name="observatedName" class="form-control" placeholder="observated class name" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
                         <label for="updateMethodName">Write name of method which updates Observator's state</label>
-                        <input type="text" id="updateMethodName" name="updateMethodName" class="form-control" placeholder="update method name">
+                        <input type="text" id="updateMethodName" name="updateMethodName" class="form-control" placeholder="update method name" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
                         <label for="changeStateMethodName">Write name of method which changes Observator's state</label>
-                        <input type="text" id="changeStateMethodName" name="changeStateMethodName" class="form-control" placeholder="state changing method name">
+                        <input type="text" id="changeStateMethodName" name="changeStateMethodName" class="form-control" placeholder="state changing method name" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
                 </div>
                 <label>Define type and name of state field in Observator class</label>
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" id="stateType" name="stateType" class="form-control" placeholder="Type of Observator's state">
+                        <input type="text" id="stateType" name="stateType" class="form-control" placeholder="Type of Observator's state" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
+
                     <div class="col">
-                        <input type="text" id="stateName" name="stateName" class="form-control" placeholder="Name of Observated's state">
+                        <input type="text" id="stateName" name="stateName" class="form-control" placeholder="Name of Observated's state" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
+
                 </div>
                 <label>Define type and name of state field in Observated class</label>
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" id="observatedState" name="observatedState" class="form-control" placeholder="Type of Observated's state">
+                        <input type="text" id="observatedState" name="observatedState" class="form-control" placeholder="Type of Observated's state" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
                     <div class="col">
-                        <input type="text" id="observatedStateObject" name="observatedStateObject" class="form-control" placeholder="Name of Observated's state">
+                        <input type="text" id="observatedStateObject" name="observatedStateObject" class="form-control" placeholder="Name of Observated's state" required>
+                        <div class="invalid-feedback">
+                            This field should not be empty.
+                        </div>
                     </div>
+
                 </div>
                 <div class="form-group row">
                     <div class="col">
