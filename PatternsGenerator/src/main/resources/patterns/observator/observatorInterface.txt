@@ -1,0 +1,6 @@
+creationInfo
+public interface observatorInterface
+{
+    updateInfo
+	void update();
+}

@@ -1,0 +1,22 @@
+creationInfo
+public class observator implements observatorInterface
+{
+	private stateType state;
+	private observated observatedObject;
+
+	public observator(observated observatedObject) {
+		this.observatedObject = observatedObject;
+	}
+
+    updateInfo
+	public void update() {
+		observatedState observatedStateObject = observated.getgetobservatedStateObject();
+		this.changeState(observatedStateObject);
+	}
+
+    changeState
+    private void changeState(observatedState observatedStateObject) {
+        emptyFunction
+        return null;
+    }
+}

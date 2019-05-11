@@ -1,0 +1,1 @@
+//this method will update Observator state field based on Observated's state

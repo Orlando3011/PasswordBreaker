@@ -1,0 +1,31 @@
+creationInfo
+import java.util.List;
+import java.util.ArrayList;
+
+public class observated implements observatedInterface
+{
+	protected List<observator> observators = new ArrayList<obserwator>();
+	private observatedState observatedStateObject;
+
+    crudInfo
+	public void addobservated(observator observatorObject) {
+		observators.add(observator);
+	}
+
+	public void removeobservated(observator observatorObject) {
+    		observators.remove(observator);
+    	}
+
+    informInfo
+	public void informobservator() {
+		Iterator<observator> it = observators.iterator();
+		while(it.hasNext())
+		{
+			it.next().update();
+		}
+	}
+
+	public observatedState getobservatedStateObject() {
+		return observatedStateObject;
+	}
+}

@@ -1,0 +1,9 @@
+creationInfo
+public interface observatedInterface
+{
+    crudInfo
+	void addobservated(obserwator obserwatorObject);
+	void removeobservated(obserwator obserwatorObject);
+	informInfo
+	void informobservator();
+}

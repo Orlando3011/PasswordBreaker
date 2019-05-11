@@ -28,6 +28,7 @@
         <form action="singleton" method="post">
             <div class="form-group row">
                 <div class="col-sm-10">
+                    <label for="className">Write name of Singleton's class</label>
                     <input type="text" id="className" name="className" class="form-control" placeholder="class name">
                 </div>
             </div>
@@ -40,7 +41,8 @@
                 </select>
             </div>
                 <div class="form-group row">
-                    <div class="col-sm-10">
+                    <div class="col">
+                        <label>Should source code include comments?</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}">
                             <label class="form-check-label" for="areCommentsIncluded">
@@ -59,11 +61,12 @@
             <p class="lead">Generated code</p>
         </div>
         <div class="card">
-            <div class="card-body"  >
+            <div class="card-body" >
                 <pre id="toDownload" th:text="${code}"></pre>
             </div>
         </div>
-    <button type="button" class="btn btn-primary" onclick="downloadDiv('code.java', 'toDownload', 'text/plain')">Download code file(s)</button>
+    <br />
+    <button type="button" class="btn btn-primary" onclick="downloadDiv('singleton.java', 'toDownload', 'text/plain')">Download code file</button>
 </div>
 </body>
 </html>

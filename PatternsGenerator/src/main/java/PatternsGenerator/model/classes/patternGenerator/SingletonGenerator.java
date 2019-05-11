@@ -1,7 +1,7 @@
-package PatternsGenerator.model.classes.singleton;
+package PatternsGenerator.model.classes.patternGenerator;
 
 import PatternsGenerator.model.classes.common.Pattern;
-import PatternsGenerator.model.interfaces.singleton.SingletonGeneratorInterface;
+import PatternsGenerator.model.interfaces.patternGenerator.SingletonGeneratorInterface;
 import PatternsGenerator.services.FileIOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ public class SingletonGenerator implements SingletonGeneratorInterface {
     }
 
     @Override
-    public String ToString() throws IOException {
+    public String GenerateSingletonClass() throws IOException {
         String singletonString = this.MakeSingletonTemplate();
         singletonString = HandleComments(singletonString);
         singletonString = singletonString.replaceAll("patternName", pattern.getName());

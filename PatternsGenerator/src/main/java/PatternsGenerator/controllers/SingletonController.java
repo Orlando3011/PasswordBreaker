@@ -1,7 +1,7 @@
 package PatternsGenerator.controllers;
 
 import PatternsGenerator.model.classes.common.Pattern;
-import PatternsGenerator.model.classes.singleton.SingletonGenerator;
+import PatternsGenerator.model.classes.patternGenerator.SingletonGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 public class SingletonController {
@@ -48,7 +47,7 @@ public class SingletonController {
         pattern.setAreCommentsIncluded(areCommentsIncluded);
         pattern.setName(className);
         singletonGenerator.setPattern(pattern);
-        model.addAttribute("code", singletonGenerator.ToString());
+        model.addAttribute("code", singletonGenerator.GenerateSingletonClass());
         return "singleton";
     }
 }
