@@ -1,22 +1,22 @@
-creationInfo
-public class observator implements observatorInterface
+%creationInfo%
+public class %observator% implements %observator%Interface
 {
-	private stateType state;
-	private observated observatedObject;
+	private %stateType% %state%;
+	private %observated% %observatedObject%;
 
-	public observator(observated observatedObject) {
-		this.observatedObject = observatedObject;
+	public %observator%(%observated% %observated%Object) {
+		this.%observated%Object = %observated%Object;
 	}
 
-    updateInfo
-	public void update() {
-		observatedState observatedStateObject = observated.getgetobservatedStateObject();
-		this.changeState(observatedStateObject);
+    %updateInfo%
+	public void %update%() {
+		%observatedState% %observatedState%Object = %observated%.get%observatedState%Object();
+		this.%changeState%(%observatedStateObject%);
 	}
 
-    changeState
-    private void changeState(observatedState observatedStateObject) {
-        emptyFunction
+    %changeStateInfo%
+    private void %changeState%(%observatedState% %observatedState%Object) {
+        %emptyFunction%
         return null;
     }
 }

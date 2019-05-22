@@ -1,6 +1,6 @@
-creationInfo
-public interface observatorInterface
+%creationInfo%
+public interface %observator%Interface
 {
-    updateInfo
-	void update();
+    %updateInfo%
+	void %update%();
 }

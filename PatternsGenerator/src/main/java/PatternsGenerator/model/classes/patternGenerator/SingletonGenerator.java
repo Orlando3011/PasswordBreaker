@@ -24,7 +24,7 @@ public class SingletonGenerator implements SingletonGeneratorInterface {
     public String GenerateSingletonClass() throws IOException {
         String singletonString = this.MakeSingletonTemplate();
         singletonString = HandleComments(singletonString);
-        singletonString = singletonString.replaceAll("patternName", pattern.getName());
+        singletonString = singletonString.replaceAll("%patternName%", pattern.getName());
         return singletonString;
     }
 
@@ -49,12 +49,12 @@ public class SingletonGenerator implements SingletonGeneratorInterface {
 
     private String HandleComments(String code) throws IOException {
         if(!pattern.getAreCommentsIncluded()) {
-            code = code.replaceAll("creationInfo", "");
-            code = code.replaceAll("privateConstructorComment", "");
+            code = code.replaceAll("%creationInfo%", "");
+            code = code.replaceAll("%privateConstructorComment%", "");
         }
         else {
-            code = code.replaceAll("creationInfo", fileIOService.ReadFromFile("patterns/common/comments/creationDetails.txt"));
-            code = code.replaceAll("privateConstructorComment", fileIOService.ReadFromFile("patterns/singleton/comments/privateConstructorComment.txt"));
+            code = code.replaceAll("%creationInfo%", fileIOService.ReadFromFile("patterns/common/comments/creationDetails.txt"));
+            code = code.replaceAll("%privateConstructorComment%", fileIOService.ReadFromFile("patterns/singleton/comments/privateConstructorComment.txt"));
         }
         return code;
     }

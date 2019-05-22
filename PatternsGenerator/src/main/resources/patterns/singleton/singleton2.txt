@@ -1,20 +1,20 @@
-creationInfo
-public final class patternName {
+%creationInfo%
+public final class %patternName% {
 
-    private static volatile patternName instance = null;
+    private static volatile %patternName% instance = null;
 
-    public static patternName getInstance() {
+    public static %patternName% getInstance() {
         if (instance == null) {
-            synchronized (patternName.class) {
+            synchronized (%patternName%.class) {
                 if (instance == null) {
-                    instance = new patternName();
+                    instance = new %patternName%();
                 }
             }
         }
         return instance;
     }
 
-privateConstructorComment
-    private patternName() {
+%privateConstructorComment%
+    private %patternName%() {
     }
 }

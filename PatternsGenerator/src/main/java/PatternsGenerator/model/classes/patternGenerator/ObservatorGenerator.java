@@ -28,16 +28,18 @@ public class ObservatorGenerator implements ObservatorInterface {
     private String HandleComments(String code) throws IOException {
 
         if(!this.pattern.getAreCommentsIncluded()) {
-            code = code.replaceAll("creationInfo", "");
-            code = code.replaceAll("crudInfo", "");
-            code = code.replaceAll("informInfo", "");
-            code = code.replaceAll("updateInfo", "");
+            code = code.replaceAll("%creationInfo%", "");
+            code = code.replaceAll("%crudInfo%", "");
+            code = code.replaceAll("%informInfo%", "");
+            code = code.replaceAll("%updateInfo%", "");
+            code = code.replaceAll("%changeStateInfo%", "");
         }
         else {
-            code = code.replaceAll("creationInfo", fileIOService.ReadFromFile("patterns/common/comments/creationDetails.txt"));
-            code = code.replaceAll("crudInfo", fileIOService.ReadFromFile("patterns/observator/comments/crudInfo.txt"));
-            code = code.replaceAll("informInfo", fileIOService.ReadFromFile("patterns/observator/comments/informInfo.txt"));
-            code = code.replaceAll("updateInfo", fileIOService.ReadFromFile("patterns/observator/comments/updateInfo.txt"));
+            code = code.replaceAll("%creationInfo%", fileIOService.ReadFromFile("patterns/common/comments/creationDetails.txt"));
+            code = code.replaceAll("%crudInfo%", fileIOService.ReadFromFile("patterns/observator/comments/crudInfo.txt"));
+            code = code.replaceAll("%informInfo%", fileIOService.ReadFromFile("patterns/observator/comments/informInfo.txt"));
+            code = code.replaceAll("%updateInfo%", fileIOService.ReadFromFile("patterns/observator/comments/updateInfo.txt"));
+            code = code.replaceAll("%changeStateInfo%", fileIOService.ReadFromFile("patterns/observator/comments/changeStateInfo.txt"));
         }
         return code;
     }
@@ -51,8 +53,8 @@ public class ObservatorGenerator implements ObservatorInterface {
     @Override
     public String GenerateObservatorInterface() throws IOException {
         String observatorString = this.makeObservatorTemplate("observatorInterface");
-        observatorString = observatorString.replaceAll("observator", this.pattern.getName());
-        observatorString = observatorString.replaceAll("update", this.updateMethodName);
+        observatorString = observatorString.replaceAll("%observator%", this.pattern.getName());
+        observatorString = observatorString.replaceAll("%update%", this.updateMethodName);
         observatorString = HandleComments(observatorString);
         return observatorString;
     }
@@ -60,8 +62,8 @@ public class ObservatorGenerator implements ObservatorInterface {
     @Override
     public String GenerateObservatedInterface() throws IOException {
         String observatorString = this.makeObservatorTemplate("observatedInterface");
-        observatorString = observatorString.replaceAll("observated", this.observatedName);
-        observatorString = observatorString.replaceAll("observator", this.pattern.getName());
+        observatorString = observatorString.replaceAll("%observated%", this.observatedName);
+        observatorString = observatorString.replaceAll("%observator%", this.pattern.getName());
         observatorString = HandleComments(observatorString);
         return observatorString;
     }
@@ -69,14 +71,14 @@ public class ObservatorGenerator implements ObservatorInterface {
     @Override
     public String GenerateObservatorClass() throws IOException {
         String observatorString = this.makeObservatorTemplate("observatorClass");
-        observatorString = observatorString.replaceAll("observated", this.observatedName);
-        observatorString = observatorString.replaceAll("observator", this.pattern.getName());
-        observatorString = observatorString.replaceAll("update", this.updateMethodName);
-        observatorString = observatorString.replaceAll("changeState", this.changeStateMethodName);
-        observatorString = observatorString.replaceAll("stateName", this.stateName);
-        observatorString = observatorString.replaceAll("stateType", this.stateType);
-        observatorString = observatorString.replaceAll("observatedState", this.observatedState);
-        observatorString = observatorString.replaceAll("observatedStateObject", this.observatedStateObject);
+        observatorString = observatorString.replaceAll("%observated%", this.observatedName);
+        observatorString = observatorString.replaceAll("%observator%", this.pattern.getName());
+        observatorString = observatorString.replaceAll("%update%", this.updateMethodName);
+        observatorString = observatorString.replaceAll("%changeState%", this.changeStateMethodName);
+        observatorString = observatorString.replaceAll("%stateName%", this.stateName);
+        observatorString = observatorString.replaceAll("%stateType%", this.stateType);
+        observatorString = observatorString.replaceAll("%observatedState%", this.observatedState);
+        observatorString = observatorString.replaceAll("%observatedStateObject%", this.observatedStateObject);
         observatorString = HandleComments(observatorString);
         return observatorString;
     }
@@ -84,11 +86,11 @@ public class ObservatorGenerator implements ObservatorInterface {
     @Override
     public String GenerateObservatedClass() throws IOException {
         String observatorString = this.makeObservatorTemplate("observatedClass");
-        observatorString = observatorString.replaceAll("observated", this.observatedName);
-        observatorString = observatorString.replaceAll("observator", this.pattern.getName());
-        observatorString = observatorString.replaceAll("update", this.updateMethodName);
-        observatorString = observatorString.replaceAll("observatedState", this.observatedState);
-        observatorString = observatorString.replaceAll("observatedStateObject", this.observatedStateObject);
+        observatorString = observatorString.replaceAll("%observated%", this.observatedName);
+        observatorString = observatorString.replaceAll("%observator%", this.pattern.getName());
+        observatorString = observatorString.replaceAll("%update%", this.updateMethodName);
+        observatorString = observatorString.replaceAll("%observatedState%", this.observatedState);
+        observatorString = observatorString.replaceAll("%observatedStateObject%", this.observatedStateObject);
         observatorString = HandleComments(observatorString);
         return observatorString;
     }
