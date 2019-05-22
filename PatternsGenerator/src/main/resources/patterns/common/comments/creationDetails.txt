@@ -1,1 +1,4 @@
-//Created on PatternGenerator
+//Created on PatternsGenerator
+//Authors: Michał Wąsik, Michał Patyna
+//Object Technologies
+//Politechnika Świętokrzyska 2019

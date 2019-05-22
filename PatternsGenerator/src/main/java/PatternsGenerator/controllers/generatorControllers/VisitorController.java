@@ -19,13 +19,31 @@ public class VisitorController {
     @Autowired
     private VisitorGenerator visitorGenerator;
 
+    public void CreateVisitor() {
+        pattern.setAreCommentsIncluded(true);
+        pattern.setName("VisitorExample");
+        visitorGenerator.setPattern(pattern);
+        visitorGenerator.setVisitedName("VisitedExample");
+        visitorGenerator.setUpdateMethodName("UpdateState");
+        visitorGenerator.setChangeStateMethodName("ChangeState");
+        visitorGenerator.setStateName("VisitorState");
+        visitorGenerator.setStateType("String");
+        visitorGenerator.setVisitedState("String");
+        visitorGenerator.setVisitedStateObject("VisitedState");
+    }
+
     @GetMapping("/visitor")
     public String ShowVisitorPage(Model model) throws IOException {
+        this.CreateVisitor();
+        model.addAttribute("visitedClassCode", this.visitorGenerator.GenerateVisitedClass());
+        model.addAttribute("visitedInterfaceCode", this.visitorGenerator.GenerateVisitedInterface());
+        model.addAttribute("visitorClassCode", this.visitorGenerator.GenerateVisitorClass());
+        model.addAttribute("visitorInterfaceCode", this.visitorGenerator.GenerateVisitorInterface());
         return "visitor";
     }
 
     @PostMapping("/visitor")
-    public String generateCode(Model model,
+    public void generateCode(Model model,
                                @RequestParam String className,
                                @RequestParam String visitedName,
                                @RequestParam String updateMethodName,
@@ -50,8 +68,6 @@ public class VisitorController {
         model.addAttribute("visitedInterfaceCode", visitorGenerator.GenerateVisitedInterface());
         model.addAttribute("visitorClassCode", visitorGenerator.GenerateVisitorClass());
         model.addAttribute("visitedClassCode", visitorGenerator.GenerateVisitedClass());
-
-        return "visitor";
     }
 
 

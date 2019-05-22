@@ -29,6 +29,7 @@ public class VisitorGenerator implements VisitorInterface {
 
         if(!this.pattern.getAreCommentsIncluded()) {
             code = code.replaceAll("%creationInfo%", "");
+            code = code.replaceAll("%emptyFunction%", "");
             code = code.replaceAll("%crudInfo%", "");
             code = code.replaceAll("%informInfo%", "");
             code = code.replaceAll("%updateInfo%", "");
@@ -36,6 +37,7 @@ public class VisitorGenerator implements VisitorInterface {
         }
         else {
             code = code.replaceAll("%creationInfo%", fileIOService.ReadFromFile("patterns/common/comments/creationDetails.txt"));
+            code = code.replaceAll("%emptyFunction%", fileIOService.ReadFromFile("patterns/common/comments/emptyFunction.txt"));
             code = code.replaceAll("%crudInfo%", fileIOService.ReadFromFile("patterns/visitor/comments/crudInfo.txt"));
             code = code.replaceAll("%informInfo%", fileIOService.ReadFromFile("patterns/visitor/comments/informInfo.txt"));
             code = code.replaceAll("%updateInfo%", fileIOService.ReadFromFile("patterns/visitor/comments/updateInfo.txt"));
@@ -52,18 +54,18 @@ public class VisitorGenerator implements VisitorInterface {
 
     @Override
     public String GenerateVisitorInterface() throws IOException {
-        String observatorString = this.makeVisitorTemplate("visitorInterface");
-        observatorString = observatorString.replaceAll("%visitor%", this.pattern.getName());
-        observatorString = observatorString.replaceAll("%update%", this.updateMethodName);
-        observatorString = HandleComments(observatorString);
-        return observatorString;
+        String visitorInterface = this.makeVisitorTemplate("visitorInterface");
+        visitorInterface = visitorInterface.replaceAll("%visitor%", this.pattern.getName());
+        visitorInterface = visitorInterface.replaceAll("%update%", this.updateMethodName);
+        visitorInterface = HandleComments(visitorInterface);
+        return visitorInterface;
     }
 
     @Override
     public String GenerateVisitedInterface() throws IOException {
         String visitorString = this.makeVisitorTemplate("visitedInterface");
-        visitorString = visitorString.replaceAll("%observated%", this.visitedName);
-        visitorString = visitorString.replaceAll("%observator%", this.pattern.getName());
+        visitorString = visitorString.replaceAll("%visited%", this.visitedName);
+        visitorString = visitorString.replaceAll("%visitor%", this.pattern.getName());
         visitorString = HandleComments(visitorString);
         return visitorString;
     }

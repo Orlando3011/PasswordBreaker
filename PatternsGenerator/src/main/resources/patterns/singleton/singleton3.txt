@@ -1,7 +1,7 @@
 %creationInfo%
 public class %patternName% {
 
-%privateConstructorComment%
+    %privateConstructorComment%
     private %patternName%() {}
 
     private final static class %patternName%Holder {

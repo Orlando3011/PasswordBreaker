@@ -1,11 +1,12 @@
 %creationInfo%
 public final class %patternName% {
-    private final static %patternName% ourInstance = new Singleton();
+    private final static %patternName% instance = new Singleton();
+
     public static %patternName% getInstance() {
-        return ourInstance;
+        return instance;
     }
 
-%privateConstructorComment%
+    %privateConstructorComment%
     private %patternName%() {
     }
 }

@@ -14,7 +14,7 @@ public final class %patternName% {
         return instance;
     }
 
-%privateConstructorComment%
+    %privateConstructorComment%
     private %patternName%() {
     }
 }

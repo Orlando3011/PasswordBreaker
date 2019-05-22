@@ -1,1 +1,1 @@
-//this method will update Visitor state field based on a Visited state
+//This method will update Visitor state field based on a Visited state

@@ -1,1 +1,2 @@
-//this method changes visitor state based on parameter, which is visited state. Implement this function to suit your needs
+//This method changes visitor state based on parameter, which is visited state.
+    //Implement this function to suit your needs

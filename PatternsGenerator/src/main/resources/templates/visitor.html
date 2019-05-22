@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>visitor</title>
-        <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
-        <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
-    </head>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>visitor</title>
+    <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+    <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
+</head>
 
-    <body>
-        <div th:insert="layout/header"></div>
+<body>
+<div th:insert="layout/header"></div>
 
-        <div class="container">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
             <div class="container">
                 <p class="lead">Visitor generator</p>
             </div>
+
             <form class='needs-validation' action="visitor" method="post" novalidate>
                 <div class="form-group row">
                     <div class="col">
                         <label for="className">Write name of Visitor class</label>
-                        <input type="text" id="className" name="className" class="form-control" placeholder="visitor class name" required>
+                        <input type="text" id="className" name="className" class="form-control" placeholder="visitor class name" required value="VisitorExample">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
@@ -27,7 +30,7 @@
                 <div class="form-group row">
                     <div class="col">
                         <label for="visitedName">Write name of Visited class</label>
-                        <input type="text" id="visitedName" name="visitedName" class="form-control" placeholder="visited class name" required>
+                        <input type="text" id="visitedName" name="visitedName" class="form-control" placeholder="visited class name" required value="VisitedExample">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
@@ -36,7 +39,7 @@
                 <div class="form-group row">
                     <div class="col">
                         <label for="updateMethodName">Write name of method which updates Visitor state</label>
-                        <input type="text" id="updateMethodName" name="updateMethodName" class="form-control" placeholder="update method name" required>
+                        <input type="text" id="updateMethodName" name="updateMethodName" class="form-control" placeholder="update method name" required value="UpdateState">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
@@ -45,7 +48,7 @@
                 <div class="form-group row">
                     <div class="col">
                         <label for="changeStateMethodName">Write name of method which changes Visitor state</label>
-                        <input type="text" id="changeStateMethodName" name="changeStateMethodName" class="form-control" placeholder="state changing method name" required>
+                        <input type="text" id="changeStateMethodName" name="changeStateMethodName" class="form-control" placeholder="state changing method name" required value="ChangeState">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
@@ -54,14 +57,14 @@
                 <label>Define type and name of state field in Visitor class</label>
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" id="stateType" name="stateType" class="form-control" placeholder="Type of Visitor state" required>
+                        <input type="text" id="stateType" name="stateType" class="form-control" placeholder="Type of Visitor state" required value="String">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
                     </div>
 
                     <div class="col">
-                        <input type="text" id="stateName" name="stateName" class="form-control" placeholder="Name of Visitor state" required>
+                        <input type="text" id="stateName" name="stateName" class="form-control" placeholder="Name of Visitor state" required value="VisitorState">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
@@ -71,13 +74,13 @@
                 <label>Define type and name of state field in Visited class</label>
                 <div class="form-group row">
                     <div class="col">
-                        <input type="text" id="visitedState" name="visitedState" class="form-control" placeholder="Type of Visited state" required>
+                        <input type="text" id="visitedState" name="visitedState" class="form-control" placeholder="Type of Visited state" required value="String">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
                     </div>
                     <div class="col">
-                        <input type="text" id="visitedStateObject" name="visitedStateObject" class="form-control" placeholder="Name of Visited state" required>
+                        <input type="text" id="visitedStateObject" name="visitedStateObject" class="form-control" placeholder="Name of Visited state" required value="VisitedState">
                         <div class="invalid-feedback">
                             This field should not be empty.
                         </div>
@@ -88,7 +91,7 @@
                     <div class="col">
                         <label>Should source code include comments?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}">
+                            <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}" checked>
                             <label class="form-check-label" for="areCommentsIncluded">
                                 Comments included
                             </label>
@@ -101,10 +104,12 @@
                     </div>
                 </div>
             </form>
-
+        </div>
+        <div class="col">
             <div class="container">
                 <p class="lead">Generated code - Visitor interface</p>
             </div>
+
             <div class="card">
                 <div class="card-body" >
                     <pre id="toDownload1" th:text="${visitorInterfaceCode}"></pre>
@@ -113,43 +118,55 @@
             <br />
             <button type="button" class="btn btn-primary" onclick="downloadDiv('VisitorInterface.java', 'toDownload1', 'text/plain')">Download code file</button>
 
-        <div class="container">
-            <br />
-            <p class="lead">Generated code - Visitor class</p>
-        </div>
-        <div class="card">
-            <div class="card-body" >
-                <pre id="toDownload2" th:text="${visitorClassCode}"></pre>
+            <div class="container">
+                <br />
+                <p class="lead">Generated code - Visitor class</p>
             </div>
-        </div>
-        <br />
-        <button type="button" class="btn btn-primary" onclick="downloadDiv('Visitor.java', 'toDownload2', 'text/plain')">Download code file</button>
-
-        <div class="container">
-            <br />
-            <p class="lead">Generated code - Visited interface</p>
-        </div>
-        <div class="card">
-            <div class="card-body" >
-                <pre id="toDownload3" th:text="${visitedInterfaceCode}"></pre>
+            <div class="card">
+                <div class="card-body" >
+                    <pre id="toDownload2" th:text="${visitorClassCode}"></pre>
+                </div>
             </div>
-        </div>
-        <br />
-        <button type="button" class="btn btn-primary" onclick="downloadDiv('VisitedInterface.java', 'toDownload3', 'text/plain')">Download code file</button>
-
-        <div class="container">
             <br />
-            <p class="lead">Generated code - Visited class</p>
-        </div>
-        <div class="card">
-            <div class="card-body" >
-                <pre id="toDownload4" th:text="${visitedClassCode}"></pre>
-            </div>
-        </div>
-        <br />
-        <button type="button" class="btn btn-primary" onclick="downloadDiv('Visited .java', 'toDownload4', 'text/plain')">Download code file</button>
-        </div>
+            <button type="button" class="btn btn-primary" onclick="downloadDiv('Visitor.java', 'toDownload2', 'text/plain')">Download code file</button>
 
-        <div th:insert="layout/footer"></div>
-    </body>
+            <div class="container">
+                <br />
+                <p class="lead">Generated code - Visited interface</p>
+            </div>
+            <div class="card">
+                <div class="card-body" >
+                    <pre id="toDownload3" th:text="${visitedInterfaceCode}"></pre>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-primary" onclick="downloadDiv('VisitedInterface.java', 'toDownload3', 'text/plain')">Download code file</button>
+
+            <div class="container">
+                <br />
+                <p class="lead">Generated code - Visited class</p>
+            </div>
+            <div class="card">
+                <div class="card-body" >
+                    <pre id="toDownload4" th:text="${visitedClassCode}"></pre>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-primary" onclick="downloadDiv('Visited .java', 'toDownload4', 'text/plain')">Download code file</button>
+
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-primary"
+                    onclick="downloadDiv('VisitorInterface.java', 'toDownload1', 'text/plain');
+                        downloadDiv('Visitor.java', 'toDownload2', 'text/plain');
+                        downloadDiv('VisitedInterface.java', 'toDownload3', 'text/plain');
+                        downloadDiv('Visited .java', 'toDownload4', 'text/plain')">
+                Download all files
+            </button>
+        </div>
+        </div>
+    </div>
+
+<div th:insert="layout/footer"></div>
+</body>
 </html>

@@ -19,13 +19,22 @@ public class SingletonController {
     @Autowired
     private SingletonGenerator singletonGenerator;
 
+    public void CreateSingleton() {
+            pattern.setVersion(1);
+            pattern.setAreCommentsIncluded(true);
+            pattern.setName("SingletonExample");
+            singletonGenerator.setPattern(pattern);
+    }
+
     @GetMapping("/singleton")
     public String ShowSingletonPage(Model model) throws IOException {
+        this.CreateSingleton();
+        model.addAttribute("code", this.singletonGenerator.GenerateSingletonClass());
         return "singleton";
     }
 
     @PostMapping("/singleton")
-    public String generateCode(Model model,
+    public void generateCode(Model model,
                                @RequestParam String singletonType,
                                @RequestParam String className,
                                @RequestParam(defaultValue="false") boolean areCommentsIncluded)
@@ -48,6 +57,5 @@ public class SingletonController {
         pattern.setName(className);
         singletonGenerator.setPattern(pattern);
         model.addAttribute("code", singletonGenerator.GenerateSingletonClass());
-        return "singleton";
     }
 }
