@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.io.IOException;
 
 @Controller
-public class ObservatorDataController {
+public class VisitorDataController {
 
-    @GetMapping("/observatorData")
-    public String ShowHomePage(Model model) throws IOException {
-        return "observatorData";
+    @GetMapping("/visitorData")
+    public String ShowVisitorDataPage(Model model) throws IOException {
+        return "visitorData";
     }
 }

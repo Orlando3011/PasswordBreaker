@@ -1,1 +1,0 @@
-//these methods menage observators list

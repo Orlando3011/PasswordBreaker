@@ -1,9 +1,0 @@
-%creationInfo%
-public interface %observated%Interface
-{
-    %crudInfo%
-	void add%observated%(obserwator obserwatorObject);
-	void remove%observated%(%obserwator% %obserwator%Object);
-	%informInfo%
-	void %informobservator%();
-}

@@ -1,0 +1,9 @@
+%creationInfo%
+public interface %visited%Interface
+{
+    %crudInfo%
+	void add%visited%(%visitor% %visitor%Object);
+	void remove%visited%(%visitor% %visitor%Object);
+	%informInfo%
+	void %informvisitor%();
+}

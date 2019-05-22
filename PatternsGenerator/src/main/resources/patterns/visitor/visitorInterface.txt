@@ -1,5 +1,5 @@
 %creationInfo%
-public interface %observator%Interface
+public interface %visitor%Interface
 {
     %updateInfo%
 	void %update%();

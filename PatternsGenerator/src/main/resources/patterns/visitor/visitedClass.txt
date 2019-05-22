@@ -1,0 +1,31 @@
+%creationInfo%
+import java.util.List;
+import java.util.ArrayList;
+
+public class %visited% implements %visited%Interface
+{
+	protected List<%visitor%> %visitor%s = new ArrayList<%obserwator%>();
+	private %visitedState% %visitedState%Object;
+
+    %crudInfo%
+	public void add%visited%(%visitor% %visitor%Object) {
+		%visitor%s.add(%visitor%);
+	}
+
+	public void remove%visited%(%visitor% %visitor%Object) {
+    		%visitor%s.remove(%visitor%);
+    	}
+
+    %informInfo%
+	public void %informvisitor%() {
+		Iterator<%visitor%> it = %visitor%s.iterator();
+		while(it.hasNext())
+		{
+			it.next().update();
+		}
+	}
+
+	public %visitedState% get%visitedState%Object() {
+		return %visitedState%Object;
+	}
+}

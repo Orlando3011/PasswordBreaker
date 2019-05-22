@@ -1,1 +1,0 @@
-//this method send information about observated object to observator

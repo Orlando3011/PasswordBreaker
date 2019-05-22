@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SingletonDataController {
 
     @GetMapping("/singletonData")
-    public String ShowHomePage(Model model) throws IOException {
+    public String ShowSingletonDataPage(Model model) throws IOException {
         return "singletonData";
     }
 }

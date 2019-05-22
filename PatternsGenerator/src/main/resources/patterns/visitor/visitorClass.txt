@@ -1,0 +1,22 @@
+%creationInfo%
+public class %visitor% implements %visitor%Interface
+{
+	private %stateType% %state%;
+	private %visited% %visited%Object;
+
+	public %visitor%(%visited% %visited%Object) {
+		this.%visited%Object = %visited%Object;
+	}
+
+    %updateInfo%
+	public void %update%() {
+		%visitedState% %visitedState%Object = %visited%.get%visitedState%Object();
+		this.%changeState%(%visitedStateObject%);
+	}
+
+    %changeStateInfo%
+    private void %changeState%(%visitedState% %visitedState%Object) {
+        %emptyFunction%
+        return null;
+    }
+}
