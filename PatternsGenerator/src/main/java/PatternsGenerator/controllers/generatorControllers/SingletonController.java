@@ -53,9 +53,11 @@ public class SingletonController {
                 break;
             }
         }
+
         pattern.setAreCommentsIncluded(areCommentsIncluded);
         pattern.setName(className);
         singletonGenerator.setPattern(pattern);
+
         model.addAttribute("code", singletonGenerator.GenerateSingletonClass());
     }
 }

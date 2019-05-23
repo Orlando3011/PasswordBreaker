@@ -1,0 +1,14 @@
+%creationInfo%
+public class %prototypeClient% {
+
+    %cloneInfo%
+    private %prototype% %prototypeInstance%;
+
+    public %prototypeClient%(%prototype% %prototypeInstance%) {
+        this.%prototypeInstance% = %prototypeInstance%;
+    }
+
+    public %prototype% %makeCopy%() {
+        return (%prototype%)%prototypeInstance%.clone();
+    }
+}

@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class VisitorDataController {
+public class PrototypeDataController {
 
-    @GetMapping("/visitorData")
-    public String ShowVisitorDataPage() {
-        return "visitorData";
+    @GetMapping("/prototypeData")
+    public String ShowPrototypeDataPage() {
+        return "prototypeData";
     }
 }

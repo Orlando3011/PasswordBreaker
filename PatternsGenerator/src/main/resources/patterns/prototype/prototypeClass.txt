@@ -1,0 +1,14 @@
+%creationInfo%
+public class %prototype% implements Cloneable {
+
+   public Object clone() {
+      try {
+         %prototype% copy = (%prototype%)super.clone();
+         return copy;
+      }
+      catch(CloneNotSupportedException e) {
+         e.printStackTrace();
+         return null;
+      }
+   }
+}

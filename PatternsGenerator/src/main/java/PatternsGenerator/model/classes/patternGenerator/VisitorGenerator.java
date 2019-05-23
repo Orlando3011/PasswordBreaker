@@ -1,7 +1,7 @@
 package PatternsGenerator.model.classes.patternGenerator;
 
 import PatternsGenerator.model.classes.common.Pattern;
-import PatternsGenerator.model.interfaces.patternGenerator.VisitorInterface;
+import PatternsGenerator.model.interfaces.patternGenerator.VisitorGeneratorInterface;
 import PatternsGenerator.services.FileIOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class VisitorGenerator implements VisitorInterface {
+public class VisitorGenerator implements VisitorGeneratorInterface {
 
     private Pattern pattern;
     private FileIOService fileIOService;
