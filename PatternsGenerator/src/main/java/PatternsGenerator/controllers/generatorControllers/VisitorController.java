@@ -19,7 +19,7 @@ public class VisitorController {
     @Autowired
     private VisitorGenerator visitorGenerator;
 
-    public void CreateVisitor() {
+    private void CreateVisitor() {
         pattern.setAreCommentsIncluded(true);
         pattern.setName("VisitorExample");
         visitorGenerator.setPattern(pattern);
@@ -39,6 +39,15 @@ public class VisitorController {
         model.addAttribute("visitedInterfaceCode", this.visitorGenerator.GenerateVisitedInterface());
         model.addAttribute("visitorClassCode", this.visitorGenerator.GenerateVisitorClass());
         model.addAttribute("visitorInterfaceCode", this.visitorGenerator.GenerateVisitorInterface());
+        model.addAttribute("visitorName", this.visitorGenerator.getPattern().getName());
+        model.addAttribute("visitedName", this.visitorGenerator.getVisitedName());
+        model.addAttribute("updateMethod", this.visitorGenerator.getUpdateMethodName());
+        model.addAttribute("changeMethod", this.visitorGenerator.getChangeStateMethodName());
+        model.addAttribute("visitorStateType", this.visitorGenerator.getStateType());
+        model.addAttribute("visitorState", this.visitorGenerator.getStateName());
+        model.addAttribute("visitedStateType", this.visitorGenerator.getVisitedState());
+        model.addAttribute("visitedState", this.visitorGenerator.getVisitedStateObject());
+        model.addAttribute("areCommentsIncluded", visitorGenerator.getPattern().getAreCommentsIncluded());
         return "visitor";
     }
 
@@ -64,10 +73,19 @@ public class VisitorController {
         visitorGenerator.setStateType(stateType);
         visitorGenerator.setVisitedState(visitedState);
         visitorGenerator.setVisitedStateObject(visitedStateObject);
-        model.addAttribute("visitorInterfaceCode", visitorGenerator.GenerateVisitorInterface());
-        model.addAttribute("visitedInterfaceCode", visitorGenerator.GenerateVisitedInterface());
-        model.addAttribute("visitorClassCode", visitorGenerator.GenerateVisitorClass());
-        model.addAttribute("visitedClassCode", visitorGenerator.GenerateVisitedClass());
+        model.addAttribute("visitedClassCode", this.visitorGenerator.GenerateVisitedClass());
+        model.addAttribute("visitedInterfaceCode", this.visitorGenerator.GenerateVisitedInterface());
+        model.addAttribute("visitorClassCode", this.visitorGenerator.GenerateVisitorClass());
+        model.addAttribute("visitorInterfaceCode", this.visitorGenerator.GenerateVisitorInterface());
+        model.addAttribute("visitorName", this.visitorGenerator.getPattern().getName());
+        model.addAttribute("visitedName", this.visitorGenerator.getVisitedName());
+        model.addAttribute("updateMethod", this.visitorGenerator.getUpdateMethodName());
+        model.addAttribute("changeMethod", this.visitorGenerator.getChangeStateMethodName());
+        model.addAttribute("visitorStateType", this.visitorGenerator.getStateType());
+        model.addAttribute("visitorState", this.visitorGenerator.getStateName());
+        model.addAttribute("visitedStateType", this.visitorGenerator.getVisitedState());
+        model.addAttribute("visitedState", this.visitorGenerator.getVisitedStateObject());
+        model.addAttribute("areCommentsIncluded", visitorGenerator.getPattern().getAreCommentsIncluded());
     }
 
 

@@ -21,28 +21,34 @@
             <div class="form-group row">
                 <div class="col-sm-10">
                     <label for="prototypeName">Write name of a Prototype class</label>
-                    <input type="text" id="prototypeName" name="prototypeName" class="form-control" placeholder="prototype class name" required value="PrototypeExample">
+                    <input type="text" id="prototypeName" name="prototypeName" class="form-control" placeholder="prototype class name" required th:value="${prototypeName}" onblur="this.form.submit()">
                     <div class="invalid-feedback">
                         Class name should not be empty.
                     </div>
                 </div>
+            </div>
+            <div class="form-group row">
                 <div class="col-sm-10">
                     <label for="clientName">Write name of a Prototype Client class</label>
-                    <input type="text" id="clientName" name="clientName" class="form-control" placeholder="prototype client class name" required value="PrototypeClientExample">
+                    <input type="text" id="clientName" name="clientName" class="form-control" placeholder="prototype client class name" required th:value="${clientName}" onblur="this.form.submit()">
                     <div class="invalid-feedback">
                         Class name should not be empty.
                     </div>
                 </div>
+            </div>
+            <div class="form-group row">
                 <div class="col-sm-10">
                     <label for="instanceName">Write name of a Prototype field in Client class</label>
-                    <input type="text" id="instanceName" name="instanceName" class="form-control" placeholder="prototype instance field name" required value="instance">
+                    <input type="text" id="instanceName" name="instanceName" class="form-control" placeholder="prototype instance field name" required th:value="${instanceName}" onblur="this.form.submit()">
                     <div class="invalid-feedback">
                         Field name should not be empty.
                     </div>
                 </div>
+            </div>
+            <div class="form-group row">
                 <div class="col-sm-10">
                     <label for="copyMethodName">Write name of a method that creates Prototype copy</label>
-                    <input type="text" id="copyMethodName" name="copyMethodName" class="form-control" placeholder="prototype copy method" required value="MakePrototypeCopy">
+                    <input type="text" id="copyMethodName" name="copyMethodName" class="form-control" placeholder="prototype copy method" required th:value="${copyMethodName}" onblur="this.form.submit()">
                     <div class="invalid-feedback">
                         Method name should not be empty.
                     </div>
@@ -52,7 +58,7 @@
                 <div class="col">
                     <label>Should source code include comments?</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}">
+                        <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}" onblur="this.form.submit()">
                         <label class="form-check-label" for="areCommentsIncluded">
                             Comments included
                         </label>

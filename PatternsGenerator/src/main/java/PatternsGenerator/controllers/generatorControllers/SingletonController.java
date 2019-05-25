@@ -19,17 +19,46 @@ public class SingletonController {
     @Autowired
     private SingletonGenerator singletonGenerator;
 
-    public void CreateSingleton() {
+    private void CreateSingleton() {
             pattern.setVersion(1);
             pattern.setAreCommentsIncluded(true);
             pattern.setName("SingletonExample");
             singletonGenerator.setPattern(pattern);
     }
 
+    private String ChooseSingletonVersion() {
+        int version = this.singletonGenerator.getPattern().getVersion();
+        String singletonType = "";
+        switch(version) {
+            case 1: {
+                singletonType = "Simple (not thread-safe)";
+                break;
+            }
+            case 2 : {
+                singletonType ="Lazy (not thread-safe)";
+                break;
+            }
+            case 3: {
+                singletonType = "Advanced (thread safe - requires Java 5 or newer)";
+                break;
+            }
+        }
+        return singletonType;
+    }
+
+    private String ChooseIfCommentsAreIncluded() {
+        String fieldChecked = "false";
+        if (this.singletonGenerator.getPattern().getAreCommentsIncluded()) fieldChecked = "true";
+        return fieldChecked;
+    }
+
     @GetMapping("/singleton")
     public String ShowSingletonPage(Model model) throws IOException {
         this.CreateSingleton();
         model.addAttribute("code", this.singletonGenerator.GenerateSingletonClass());
+        model.addAttribute("singletonName", this.singletonGenerator.getPattern().getName());
+        model.addAttribute("singletonType", this.ChooseSingletonVersion());
+        model.addAttribute("areCommentsIncluded", this.ChooseIfCommentsAreIncluded());
         return "singleton";
     }
 
@@ -59,5 +88,8 @@ public class SingletonController {
         singletonGenerator.setPattern(pattern);
 
         model.addAttribute("code", singletonGenerator.GenerateSingletonClass());
+        model.addAttribute("singletonName", this.singletonGenerator.getPattern().getName());
+        model.addAttribute("singletonType", this.ChooseSingletonVersion());
+        model.addAttribute("areCommentsIncluded", this.ChooseIfCommentsAreIncluded());
     }
 }
