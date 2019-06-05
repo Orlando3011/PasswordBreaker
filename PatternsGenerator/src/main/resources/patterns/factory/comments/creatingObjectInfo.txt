@@ -1,0 +1,1 @@
+//Here you should use an object's constructor in order to make a proper instance of a class.

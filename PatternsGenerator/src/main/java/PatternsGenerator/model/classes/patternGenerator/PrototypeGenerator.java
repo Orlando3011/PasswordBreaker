@@ -25,7 +25,7 @@ public class PrototypeGenerator implements PrototypeGeneratorInterface {
 
     @Override
     public String GeneratePrototypeClass() throws IOException {
-        String prototypeClass = this.makePrototypeTemplate("prototypeClass");
+        String prototypeClass = this.MakePrototypeTemplate("prototypeClass");
         prototypeClass = prototypeClass.replaceAll("%prototype%", this.pattern.getName());
         prototypeClass = this.HandleComments(prototypeClass);
         return prototypeClass;
@@ -33,7 +33,7 @@ public class PrototypeGenerator implements PrototypeGeneratorInterface {
 
     @Override
     public String GenerateClientClass() throws IOException {
-        String prototypeClient = this.makePrototypeTemplate("prototypeClient");
+        String prototypeClient = this.MakePrototypeTemplate("prototypeClient");
         prototypeClient = prototypeClient.replaceAll("%prototype%", this.pattern.getName());
         prototypeClient = prototypeClient.replaceAll("%prototypeClient%", this.getClientName());
         prototypeClient = prototypeClient.replaceAll("%prototypeInstance%", this.getInstanceName());
@@ -42,7 +42,7 @@ public class PrototypeGenerator implements PrototypeGeneratorInterface {
         return prototypeClient;
     }
 
-    private String makePrototypeTemplate(String fileName) throws IOException {
+    private String MakePrototypeTemplate(String fileName) throws IOException {
         return fileIOService.ReadFromFile("patterns/prototype/" + fileName + ".txt");
     }
 

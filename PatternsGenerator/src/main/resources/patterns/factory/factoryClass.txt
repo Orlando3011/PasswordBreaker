@@ -1,0 +1,4 @@
+%creationInfo%
+public interface %factoryName% {
+    public %mainClassName% create%mainClassName%();
+}

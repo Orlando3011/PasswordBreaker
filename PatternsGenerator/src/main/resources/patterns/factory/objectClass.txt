@@ -1,0 +1,7 @@
+%creationInfo%
+public class %className% implements %mainClassName% {
+    public %className%() {
+        %objectConstructionInfo%
+    }
+}
+

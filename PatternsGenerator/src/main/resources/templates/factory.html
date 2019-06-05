@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>factory</title>
+    <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+    <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
+</head>
+
+<body>
+<div th:insert="layout/header"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="container">
+                <p class="lead">Factory generator</p>
+            </div>
+
+            <form class='needs-validation' action="factory" method="post" novalidate>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <label for="factoryName">Write name of a Factory interface</label>
+                        <input type="text" id="factoryName" name="factoryName" class="form-control" placeholder="Factory interface name" required th:value="${factoryName}" onblur="this.form.submit()">
+                        <div class="invalid-feedback">
+                            Interface name should not be empty.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <label for="interfaceName">Write name of a base interface class</label>
+                        <input type="text" id="interfaceName" name="interfaceName" class="form-control" placeholder="base class class name" required th:value="${interfaceName}" onblur="this.form.submit()">
+                        <div class="invalid-feedback">
+                            Interface name should not be empty.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <label for="subclasses">Write names of subclasses that Factory will be able to instantiate (use commas to divide names as shown below)</label>
+                        <input type="text" id="subclasses" name="subclasses" class="form-control" placeholder="subclasses' names" required th:value="${subclassesExample}" onblur="this.form.submit()">
+                        <div class="invalid-feedback">
+                            There should be at least one subclass.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        <label>Should source code include comments?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}" onblur="this.form.submit()">
+                            <label class="form-check-label" for="areCommentsIncluded">
+                                Comments included
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Generate code</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col">
+            <div class="container">
+                <p class="lead">Generated code - Factory interface</p>
+            </div>
+            <div class="card">
+                <div class="card-body" >
+                    <pre id="toDownload" th:text="${factory}"></pre>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-primary" onclick="downloadDiv('factory.java', 'toDownload', 'text/plain')">Download code file</button>
+
+            <div class="container">
+                <br />
+                <p class="lead">Generated code - Factory subclasses</p>
+            </div>
+            <div class="card">
+                <div class="card-body" >
+                    <pre id="toDownload2" th:text="${subfactories}"></pre>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-primary" onclick="downloadDiv('subfactiories.java', 'toDownload2', 'text/plain')">Download code file</button>
+
+            <div class="container">
+                <br />
+                <p class="lead">Generated code - Product interface</p>
+            </div>
+            <div class="card">
+                <div class="card-body" >
+                    <pre id="toDownload3" th:text="${interface}"></pre>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-primary" onclick="downloadDiv('interface.java', 'toDownload3', 'text/plain')">Download code file</button>
+
+            <div class="container">
+                <br />
+                <p class="lead">Generated code - Product subclasses</p>
+            </div>
+            <div class="card">
+                <div class="card-body" >
+                    <pre id="toDownload4" th:text="${subclasses}"></pre>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-primary" onclick="downloadDiv('subclasses.java', 'toDownload4', 'text/plain')">Download code file</button>
+
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-primary"
+                    onclick="downloadDiv('factory.java', 'toDownload', 'text/plain');
+                        downloadDiv('subfactiories.java', 'toDownload2', 'text/plain');
+                        downloadDiv('interface.java', 'toDownload3', 'text/plain');
+                        downloadDiv('subclasses.java', 'toDownload4', 'text/plain')">
+                Download all files
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div th:insert="layout/footer"></div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+%creationInfo%
+public class %className%Factory implements %factoryName% {
+
+    public %mainClassName% create%mainClassName%() {
+        %creatingObjectInfo%
+
+        %className% instance = new %className%();
+        return instance;
+    }
+}
+

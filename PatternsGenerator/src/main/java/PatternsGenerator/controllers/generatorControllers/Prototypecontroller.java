@@ -26,7 +26,6 @@ public class Prototypecontroller {
         prototypeGenerator.setClientName("PrototypeClientExample");
         prototypeGenerator.setInstanceName("instance");
         prototypeGenerator.setCopyMethodName("MakePrototypeCopy");
-
     }
 
     @GetMapping("/prototype")
@@ -34,6 +33,7 @@ public class Prototypecontroller {
         this.createPrototype();
         model.addAttribute("prototype", this.prototypeGenerator.GeneratePrototypeClass());
         model.addAttribute("client", this.prototypeGenerator.GenerateClientClass());
+
         model.addAttribute("prototypeName", this.prototypeGenerator.getPattern().getName());
         model.addAttribute("clientName", this.prototypeGenerator.getClientName());
         model.addAttribute("instanceName", this.prototypeGenerator.getInstanceName());

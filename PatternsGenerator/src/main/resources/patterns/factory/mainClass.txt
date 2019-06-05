@@ -1,0 +1,3 @@
+%creationInfo%
+public interface %mainClassName% {
+}
