@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
+
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>prototypeData</title>
+    <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+    <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
 <body>
-<div th:insert="layout/header"></div>
 
-<div th:insert="layout/footer"></div>
+<div class="container">
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            Prototype description
+        </div>
+
+        <div class="panel-body text-justify">
+            Declare an abstract base class that specifies a pure virtual "clone" method, and, maintains a dictionary of all "cloneable" concrete derived classes. Any class that needs a "polymorphic constructor" capability: derives itself from the abstract base class, registers its prototypical instance, and implements the clone() operation.
+
+            The client then, instead of writing code that invokes the "new" operator on a hard-wired class name, calls a "clone" operation on the abstract base class, supplying a string or enumerated data type that designates the particular concrete derived class desired.
+
+            <div class="panel-footer text-center">
+                <img src="https://sourcemaking.com/files/v2/content/patterns/Prototype.png "/>
+            </div>
+
+            <div class="panel-footer">
+                <small>
+                    Source:
+                    <a href="https://sourcemaking.com/design_patterns/prototype">
+                        https://sourcemaking.com/design_patterns/prototype
+                    </a>
+
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div th:insert="layout/footer"></div>
+    <div th:insert="layout/header"></div>
+
+    <div th:insert="layout/footer"></div>
+</div>
 </body>
+
 </html>

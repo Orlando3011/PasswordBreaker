@@ -1,15 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
+
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>singletonData</title>
+    <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+    <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
 <body>
-<div th:insert="layout/header"></div>
 
+<div class="container">
 
-<div th:insert="layout/footer"></div>
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            Singleton description
+        </div>
+
+        <div class="panel-body text-justify">
+            Make the class of the single instance object responsible for creation, initialization, access, and enforcement. Declare the instance as a private static data member. Provide a public static member function that encapsulates all initialization code, and provides access to the instance.
+
+            The client calls the accessor function (using the class name and scope resolution operator) whenever a reference to the single instance is required.
+
+            Singleton should be considered only if all three of the following criteria are satisfied:
+
+            Ownership of the single instance cannot be reasonably assigned
+            Lazy initialization is desirable
+            Global access is not otherwise provided for
+            If ownership of the single instance, when and how initialization occurs, and global access are not issues, Singleton is not sufficiently interesting.
+
+            The Singleton pattern can be extended to support access to an application-specific number of instances.
+
+            The "static member function accessor" approach will not support subclassing of the Singleton class. If subclassing is desired, refer to the discussion in the book.
+
+            Deleting a Singleton class/instance is a non-trivial design problem. See "To Kill A Singleton" by John Vlissides for a discussion.
+
+            <div class="panel-footer text-center">
+                <img src="https://sourcemaking.com/files/v2/content/patterns/singleton1.png "/>
+            </div>
+
+            <div class="panel-footer">
+                <small>
+                    Source:
+                    <a href="https://sourcemaking.com/design_patterns/singleton">
+                        https://sourcemaking.com/design_patterns/singleton
+                    </a>
+
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div th:insert="layout/footer"></div>
+    <div th:insert="layout/header"></div>
+
+    <div th:insert="layout/footer"></div>
+</div>
 </body>
-</html>
 
+</html>

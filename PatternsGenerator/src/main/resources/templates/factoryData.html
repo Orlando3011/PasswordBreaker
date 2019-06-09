@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>factoryData</title>
-        <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
-        <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
-    </head>
 
-    <body>
-        <div th:insert="layout/header"></div>
+<head>
+    <title>factoryData</title>
+    <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+    <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
 
-        <div th:insert="layout/footer"></div>
-    </body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            Factory description
+        </div>
+
+        <div class="panel-body text-justify">
+            Factory Method is to creating objects as Template Method is to implementing an algorithm. A superclass specifies all standard and generic behavior (using pure virtual "placeholders" for creation steps), and then delegates the creation details to subclasses
+            that are supplied by the client. Factory Method makes a design more customizable and only a little more complicated. Other design patterns require new classes, whereas Factory Method only requires a new operation. People often use Factory
+            Method as the standard way to create objects; but it isn't necessary if: the class that's instantiated never changes, or instantiation takes place in an operation that subclasses can easily override (such as an initialization operation).
+            Factory Method is similar to Abstract Factory but without the emphasis on families. Factory Methods are routinely specified by an architectural framework, and then implemented by the user of the framework.
+        </div>
+
+        <div class="panel-footer text-center">
+            <img src="https://sourcemaking.com/files/v2/content/patterns/Factory_Method.png" />
+        </div>
+
+        <div class="panel-footer">
+            <small>
+                Source:
+                <a href="https://sourcemaking.com/design_patterns">
+                    https://sourcemaking.com/design_patterns
+                </a>
+
+            </small>
+        </div>
+
+    </div>
+
+</div>
+
+<div th:insert="layout/footer"></div>
+<div th:insert="layout/header"></div>
+
+<div th:insert="layout/footer"></div>
+</body>
+
 </html>
