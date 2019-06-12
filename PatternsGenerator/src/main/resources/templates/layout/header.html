@@ -7,7 +7,7 @@
 <body>
     <div th:fragment="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">Patterns Generator</a>
+            <a class="panel-heading">Patterns Generator</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,10 +22,17 @@
                             Patterns list
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <h6 class="dropdown-header">Creational patterns</h6>
+                            <a class="dropdown-item" href="factory">Factory</a>
                             <a class="dropdown-item" href="prototype">Prototype</a>
                             <a class="dropdown-item" href="singleton">Singleton</a>
+
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Behavioral patterns</h6>
                             <a class="dropdown-item" href="visitor">Visitor</a>
-                            <a class="dropdown-item" href="factory">Factory</a>
+
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Structural patterns</h6>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -33,14 +40,21 @@
                             Knowledge base
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <h6 class="dropdown-header">Creational patterns</h6>
+                            <a class="dropdown-item" href="factoryData">Factory</a>
                             <a class="dropdown-item" href="prototypeData">Prototype</a>
                             <a class="dropdown-item" href="singletonData">Singleton</a>
+
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Behavioral patterns</h6>
                             <a class="dropdown-item" href="visitorData">Visitor</a>
-                            <a class="dropdown-item" href="factoryData">Factory</a>
+
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Structural patterns</h6>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="credits">Credits<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="credits">Sources<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>

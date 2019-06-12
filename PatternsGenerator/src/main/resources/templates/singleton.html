@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>singleton</title>
     <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
     <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
@@ -15,57 +16,57 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="container">
-                <p class="lead">Singleton generator</p>
-            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Singleton generator</div>
 
-            <form class='needs-validation' action="singleton" method="post" novalidate>
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <label for="className">Write name of a Singleton class</label>
-                        <input type="text" id="className" name="className" class="form-control" placeholder="class name" required th:value="${singletonName}" onblur="this.form.submit()">
-                        <div class="invalid-feedback">
-                            Class name should not be empty.
+                <div class="panel-body">
+                    <form class='needs-validation' action="singleton" method="post" novalidate>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="className">Write name of a Singleton class</label>
+                                <input type="text" id="className" name="className" class="form-control" placeholder="class name" required th:value="${singletonName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Class name should not be empty.
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="singletonType">Choose an implementation you want to use</label>
-                    <select class="form-control" id="singletonType" name="singletonType" th:value="${singletonType}" onblur="this.form.submit()">
-                        <option>Simple (not thread-safe)</option>
-                        <option>Lazy (not thread-safe)</option>
-                        <option>Advanced (thread safe - requires Java 5 or newer)</option>
-                    </select>
-                </div>
-                <div class="form-group row">
-                    <div class="col">
-                        <label>Should source code include comments?</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}" onblur="this.form.submit()">
-                            <label class="form-check-label" for="areCommentsIncluded">
-                                Comments included
-                            </label>
+                        <div class="form-group">
+                            <label for="singletonType">Choose an implementation you want to use</label>
+                            <select class="form-control" id="singletonType" name="singletonType" th:value="${singletonType}" onblur="this.form.submit()">
+                                <option>Simple (not thread-safe)</option>
+                                <option>Lazy (not thread-safe)</option>
+                                <option>Advanced (thread safe - requires Java 5 or newer)</option>
+                            </select>
                         </div>
-                    </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Should source code include comments?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}" onblur="this.form.submit()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <br />
+                                <button type="submit" class="btn btn-primary">Generate code</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Generate code</button>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
+
         <div class="col">
-            <div class="container">
-                <p class="lead">Generated code</p>
-            </div>
-            <div class="card">
-                <div class="card-body" >
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code</div>
+                <div class="panel-body">
                     <pre id="toDownload" th:text="${code}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('singleton.java', 'toDownload', 'text/plain')">Download code file</button>
                 </div>
             </div>
-            <br />
-            <button type="button" class="btn btn-primary" onclick="downloadDiv('singleton.java', 'toDownload', 'text/plain')">Download code file</button>
         </div>
     </div>
 </div>
