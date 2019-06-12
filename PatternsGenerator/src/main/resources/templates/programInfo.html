@@ -9,6 +9,74 @@
 <body>
     <div th:insert="layout/header"></div>
 
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                General information
+            </div>
+
+            <div class="panel-body text-justify">
+                <p>
+                    This program is directed towards novice programmers, to help them with using software design patterns.
+                    With the use of simple forms, user can generate source code of a design pattern in a few moments.
+                    Each source file can be downloaded as a .java file, and edited remotely in one's machine.
+                </p>
+            </div>
+            <div class="panel-heading">
+                Architecture
+            </div>
+            <div class="panel-body text-justify">
+                <p>
+                    This application is based on an MVC pattern, which is an architectural pattern (do not mistake it with design patterns).
+                    API created in this pattern is divided into three major modules:
+                </p>
+                <ul>
+                    <li>
+                        Model - representation of an API logic - is this case, it contains definition of a Pattern class, and classes that inherits from it.
+                    </li>
+                    <li>
+                        View - it describes the way, in which model is displayed do the user. This application was intended to work as an Web API, so its model contains HTML templates, JS scripts, and CSS files.
+                    </li>
+                    <li>
+                        Controller - it is a link between user and model / views. It changes views according to the user's actions, and makes operation on model elements.
+                        PattersGenerator has a controller for each HTML template. Every one of them has methods to handle user requests.
+                    </li>
+                </ul>
+                <p>
+                    This pattern makes an application easy to understand and develop, and makes writing code easier.
+                    The same approach in writing API with user interface is used in C# ASP library.
+                </p>
+            </div>
+            <div class="panel-heading">
+                Technologies used
+            </div>
+            <div class="panel-body text-justify">
+                <p>
+                    This project was created with the use of:
+                </p>
+                <ul>
+                    <li>
+                        Maven - managing plugins and external libraries;
+                    </li>
+                    <li>
+                        Java 1.8;
+                    </li>
+                    <li>
+                        Spring Boot - creating first project files, and making configuration;
+                    </li>
+                    <li>
+                        Spring Web - making web application with MVC pattern;
+                    </li>
+                    <li>
+                        HTML 5.1, CSS, JavaScript;
+                    </li>
+                    <li>
+                        Thymeleaf - connecting HTML templates with Java backend;
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <div th:insert="layout/footer"></div>
 </body>
