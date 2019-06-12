@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <title>adapter</title>
+    <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+    <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
+</head>
+
+<body>
+<div th:insert="layout/header"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="panel panel-default">
+                <div class="panel-heading">Adapter generator</div>
+                <div class="panel-body">
+                    <form class='needs-validation' action="adapter" method="post" novalidate>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="adapterName">Write name of an Adapter interface</label>
+                                <input type="text" id="adapterName" name="adapterName" class="form-control" placeholder="Adapter interface name" required th:value="${adapterName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Interface name should not be empty.
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="firstClassName">Write name of the first class</label>
+                                <input type="text" id="firstClassName" name="firstClassName" class="form-control" placeholder="First class name" required th:value="${firstClassName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Class name should not be empty.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="secondClassName">Write name of the second class</label>
+                                <input type="text" id="secondClassName" name="secondClassName" class="form-control" placeholder="Second class name" required th:value="${secondClassName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Class name should not be empty.
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="methodName">Write name of the method you need to wrap</label>
+                                <input type="text" id="methodName" name="methodName" class="form-control" placeholder="Wrapped method name" required th:value="${methodName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Method name should not be empty.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="methodParameters">Write arguments of above mentioned method (e.g. "String name, int id") </label>
+                                <input type="text" id="methodParameters" name="methodParameters" class="form-control" placeholder="Wrapped method arguments" th:value="${methodParameters}" onblur="this.form.submit()">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="methodReturn">Write type that method should return.</label>
+                                <input type="text" id="methodReturn" name="methodReturn" class="form-control" placeholder="Wrapped method return value" th:value="${methodReturn}" onblur="this.form.submit()">
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Should source code include comments?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}" onblur="this.form.submit()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <br />
+                                <button type="submit" class="btn btn-primary">Generate code</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - Adapter interface</div>
+                <div class="panel-body">
+                    <pre id="toDownload" th:text="${interface}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('adapterInterface.java', 'toDownload', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - First class</div>
+                <div class="panel-body">
+                    <pre id="toDownload2" th:text="${firstClass}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('firstClass.java', 'toDownload2', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - Second class</div>
+                <div class="panel-body">
+                    <pre id="toDownload3" th:text="${secondClass}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('secondClass.java', 'toDownload3', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - First adapter</div>
+                <div class="panel-body">
+                    <pre id="toDownload4" th:text="${firstAdapter}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('firstAdapter.java', 'toDownload4', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - Second adapter</div>
+                <div class="panel-body">
+                    <pre id="toDownload5" th:text="${secondAdapter}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('secondAdapter.java', 'toDownload5', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+            <br/>
+
+            <button type="button" class="btn btn-primary"
+                    onclick="downloadDiv('adapterInterface.java', 'toDownload', 'text/plain');
+                        downloadDiv('firstClass.java', 'toDownload2', 'text/plain');
+                        downloadDiv('secondClass.java', 'toDownload3', 'text/plain');
+                        downloadDiv('firstAdapter.java', 'toDownload4', 'text/plain');
+                        downloadDiv('secondAdapter.java', 'toDownload5', 'text/plain')">
+                Download all files
+            </button>
+        </div>
+    </div>
+</div>
+
+<div th:insert="layout/footer"></div>
+</body>
+</html>

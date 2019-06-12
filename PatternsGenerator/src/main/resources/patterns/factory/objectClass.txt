@@ -1,5 +1,5 @@
 %creationInfo%
-public class %className% implements %mainClassName% {
+class %className% implements %mainClassName% {
     public %className%() {
         %objectConstructionInfo%
     }

@@ -1,0 +1,8 @@
+%creationInfo%
+public class %className% {
+
+    public %returnType% %methodToWrap%(%methodArguments%) {
+        %emptyFunction%
+    }
+
+}

@@ -1,0 +1,5 @@
+%creationInfo%
+public interface %adapter%Interface {
+
+    %returnType% %methodToWrap%(%methodArguments%);
+}

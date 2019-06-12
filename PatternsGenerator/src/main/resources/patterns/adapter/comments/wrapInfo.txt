@@ -1,0 +1,1 @@
+//Here you should assure that this method "wraps" given parameters and adapts it do the second class

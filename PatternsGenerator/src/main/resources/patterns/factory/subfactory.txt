@@ -1,5 +1,5 @@
 %creationInfo%
-public class %className%Factory implements %factoryName% {
+class %className%Factory implements %factoryName% {
 
     public %mainClassName% create%mainClassName%() {
         %creatingObjectInfo%

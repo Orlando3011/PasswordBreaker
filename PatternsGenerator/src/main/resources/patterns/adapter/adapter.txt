@@ -1,0 +1,12 @@
+%creationInfo%
+public class %className%Adapter implements %adapter%Interface {
+    private %className% instance;
+
+    public %className%Adapter(%className% instance) {
+        this.instance = instance;
+    }
+
+        public %returnType% %methodToWrap%(%methodArguments%) {
+            %wrapInfo%
+        }
+}
