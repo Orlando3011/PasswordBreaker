@@ -1,0 +1,4 @@
+%creationInfo%
+public abstract class %stateName% {
+    public void %changeStateMethod%(%className% instance);
+ }

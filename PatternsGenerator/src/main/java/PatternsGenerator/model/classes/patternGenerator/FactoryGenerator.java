@@ -29,7 +29,7 @@ public class FactoryGenerator implements FactoryGeneratorInterface {
         factoryInterface = factoryInterface.replaceAll("%factoryName%", this.getPattern().getName());
         factoryInterface = factoryInterface.replaceAll("%mainClassName%", this.getMainClassName());
         factoryInterface = this.HandleComments(factoryInterface);
-        return  factoryInterface;
+        return factoryInterface;
     }
 
     @Override

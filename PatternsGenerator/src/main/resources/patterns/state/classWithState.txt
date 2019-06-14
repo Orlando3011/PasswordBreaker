@@ -1,0 +1,12 @@
+%creationInfo%
+public class %className% {
+    private %stateName% stateInstance;
+
+    public void set%stateName%(%stateName% stateInstance) {
+            this.stateInstance = stateInstance;
+        }
+
+        public void %changeStateMethod%() {
+            stateInstance.%changeStateMethod%(this);
+        }
+}

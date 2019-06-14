@@ -4,4 +4,3 @@ class %className% implements %mainClassName% {
         %objectConstructionInfo%
     }
 }
-

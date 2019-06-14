@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <title>factory</title>
+    <title>state</title>
     <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
     <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
 </head>
@@ -15,32 +15,41 @@
     <div class="row">
         <div class="col">
             <div class="panel panel-default">
-                <div class="panel-heading">Factory generator</div>
+                <div class="panel-heading">State generator</div>
 
                 <div class="panel-body">
-                    <form class='needs-validation' action="factory" method="post" novalidate>
+                    <form class='needs-validation' action="state" method="post" novalidate>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <label for="factoryName">Write name of a Factory interface</label>
-                                <input type="text" id="factoryName" name="factoryName" class="form-control" placeholder="Factory interface name" required th:value="${factoryName}" onblur="this.form.submit()">
+                                <label for="stateName">Write name of a State main class</label>
+                                <input type="text" id="stateName" name="stateName" class="form-control" placeholder="State class name" required th:value="${stateName}" onblur="this.form.submit()">
                                 <div class="invalid-feedback">
-                                    Interface name should not be empty.
+                                    Class name should not be empty.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <label for="interfaceName">Write name of a base interface class</label>
-                                <input type="text" id="interfaceName" name="interfaceName" class="form-control" placeholder="base class class name" required th:value="${interfaceName}" onblur="this.form.submit()">
+                                <label for="className">Write name of a class that uses State pattern</label>
+                                <input type="text" id="className" name="className" class="form-control" placeholder="Class using State pattern name" required th:value="${className}" onblur="this.form.submit()">
                                 <div class="invalid-feedback">
-                                    Interface name should not be empty.
+                                    Class name should not be empty.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <label for="subclasses">Write names of subclasses that Factory will be able to instantiate (use commas to divide names as shown below)</label>
-                                <input type="text" id="subclasses" name="subclasses" class="form-control" placeholder="subclasses' names" required th:value="${subclassesExample}" onblur="this.form.submit()">
+                                <label for="methodName">Write name of a method that changes state</label>
+                                <input type="text" id="methodName" name="methodName" class="form-control" placeholder="Name of method that changes state" required th:value="${methodName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Method name should not be empty.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="subclasses">Write names of State subclasses - each one represents one particular state (use commas to divide names as shown below)</label>
+                                <input type="text" id="subclasses" name="subclasses" class="form-control" placeholder="subclasses' names" required th:value="${subclasses}" onblur="this.form.submit()">
                                 <div class="invalid-feedback">
                                     There should be at least one subclass.
                                 </div>
@@ -68,41 +77,33 @@
 
         <div class="col">
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">Generated code - Factory interface</div>
-                    <div class="panel-body">
-                        <pre id="toDownload" th:text="${factory}"></pre>
-                        <br />
-                        <button type="button" class="btn btn-primary" onclick="downloadDiv('factory.java', 'toDownload', 'text/plain')">Download code file</button>
-                    </div>
-                </div>
-
             <div class="panel panel-default">
-                <div class="panel-heading">Generated code - Factory subclasses</div>
+                <div class="panel-heading">Generated code - State main class</div>
                 <div class="panel-body">
-                    <pre id="toDownload2" th:text="${subfactories}"></pre>
+                    <pre id="toDownload" th:text="${state}"></pre>
                     <br />
-                    <button type="button" class="btn btn-primary" onclick="downloadDiv('subfactiories.java', 'toDownload2', 'text/plain')">Download code file</button>
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('state.java', 'toDownload', 'text/plain')">Download code file</button>
                 </div>
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Generated code - Product interface</div>
+                <div class="panel-heading">Generated code - class with State pattern</div>
                 <div class="panel-body">
-                    <pre id="toDownload3" th:text="${interface}"></pre>
+                    <pre id="toDownload2" th:text="${class}"></pre>
                     <br />
-                    <button type="button" class="btn btn-primary" onclick="downloadDiv('interface.java', 'toDownload3', 'text/plain')">Download code file</button>
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('classWithState.java', 'toDownload2', 'text/plain')">Download code file</button>
                 </div>
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Generated code - Product subclasses</div>
+                <div class="panel-heading">Generated code - State subclasses</div>
                 <div class="panel-body">
-                    <pre id="toDownload4" th:text="${subclasses}"></pre>
+                    <pre id="toDownload3" th:text="${stateSubclasses}"></pre>
                     <br />
-                    <button type="button" class="btn btn-primary" onclick="downloadDiv('subclasses.java', 'toDownload4', 'text/plain')">Download code file</button>
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('subclasses.java', 'toDownload3', 'text/plain')">Download code file</button>
                 </div>
             </div>
+
             <br/>
             <button type="button" class="btn btn-primary"
                     onclick="downloadDiv('factory.java', 'toDownload', 'text/plain');

@@ -1,0 +1,7 @@
+%creationInfo%
+class %subclassName% extends %stateName% {
+
+    public void %changeStateMethod%(%className% instance) {
+        %emptyFunctionInfo%
+    }
+}
