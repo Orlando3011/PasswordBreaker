@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdapterDataController {
 
     @GetMapping("/adapterData")
-    public String ShowFactoryDataPage() {
+    public String ShowAdapterDataPage() {
         return "adapterData";
     }
 }

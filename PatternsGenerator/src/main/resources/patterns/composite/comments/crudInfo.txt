@@ -1,0 +1,2 @@
+//standard crud operations for list of objects
+//Modify them, or add new ones that suit your needs

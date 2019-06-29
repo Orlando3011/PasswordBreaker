@@ -1,0 +1,29 @@
+%creationInfo%
+
+import java.util.ArrayList;
+
+public class %composite% implements %interface% {
+    private final ArrayList<%interface%> child%interface% = new ArrayList<>();
+
+    %crudInfo%
+    public void add%interface%(%interface% instance) {
+        child%interface%.add(instance);
+    }
+
+    public void remove%interface%(int index) {
+            child%interface%.remove(index);
+        }
+
+    public update%interface%(%interface% instance, int index) {
+            child%interface%.set(index, instance);
+        }
+
+    public String list%interface%() {
+        String list;
+        for(%interface% instance: child%interface%) {
+            list = list + instance.toString();
+            %stringInfo%
+        }
+        return list;
+    }
+}

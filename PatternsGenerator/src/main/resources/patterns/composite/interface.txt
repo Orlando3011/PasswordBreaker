@@ -1,0 +1,4 @@
+%creationInfo%
+public interface %interface% {
+    %emptyFunction%
+}

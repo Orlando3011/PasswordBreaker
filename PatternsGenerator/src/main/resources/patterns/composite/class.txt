@@ -1,0 +1,5 @@
+%creationInfo%
+class %class% implements %interface% {
+    %emptyFunction%
+}
+

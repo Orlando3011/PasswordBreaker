@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <title>composite</title>
+    <script language="Javascript" type="text/javascript" src="/js/DownloadFile.js"></script>
+    <script language="Javascript" type="text/javascript" src="/js/ValidateForm.js"></script>
+</head>
+
+<body>
+<div th:insert="layout/header"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="panel panel-default">
+                <div class="panel-heading">Composite generator</div>
+
+                <div class="panel-body">
+                    <form class='needs-validation' action="composite" method="post" novalidate>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="interfaceName">Write name of a class interface</label>
+                                <input type="text" id="interfaceName" name="interfaceName" class="form-control" placeholder="Interface name" required th:value="${interfaceName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Interface name should not be empty.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="compositeName">Write name of a Composite class</label>
+                                <input type="text" id="compositeName" name="compositeName" class="form-control" placeholder="Composite class name" required th:value="${compositeName}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    Class name should not be empty.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <label for="subclasses">Write names of subclasses that will be stored in Composite field (use commas to divide names as shown below)</label>
+                                <input type="text" id="subclasses" name="subclasses" class="form-control" placeholder="subclasses' names" required th:value="${subclasses}" onblur="this.form.submit()">
+                                <div class="invalid-feedback">
+                                    There should be at least one subclass.
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Should source code include comments?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="areCommentsIncluded" name="areCommentsIncluded" th:checked="${areCommentsIncluded}" onblur="this.form.submit()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <br />
+                                <button type="submit" class="btn btn-primary">Generate code</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - Composite class</div>
+                <div class="panel-body">
+                    <pre id="toDownload" th:text="${composite}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('Composite.java', 'toDownload', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - Class Interface</div>
+                <div class="panel-body">
+                    <pre id="toDownload2" th:text="${interface}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('InstanceInterface.java', 'toDownload2', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Generated code - Subclasses</div>
+                <div class="panel-body">
+                    <pre id="toDownload3" th:text="${subclassesCode}"></pre>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="downloadDiv('Subclasses.java', 'toDownload3', 'text/plain')">Download code file</button>
+                </div>
+            </div>
+
+            <br/>
+            <button type="button" class="btn btn-primary"
+                    onclick="downloadDiv('Composite.java', 'toDownload', 'text/plain');
+                        downloadDiv('InstanceInterface.java', 'toDownload2', 'text/plain');
+                        downloadDiv('Subclasses.java', 'toDownload3', 'text/plain')">
+                Download all files
+            </button>
+        </div>
+    </div>
+</div>
+
+<div th:insert="layout/footer"></div>
+</body>
+</html>
