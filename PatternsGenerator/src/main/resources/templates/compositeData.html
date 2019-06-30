@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <title>compositeData</title>
-    </head>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <title>CompositeData</title>
+</head>
 
-    <body>
-        <div th:insert="layout/header"></div>
+<body>
+<div th:insert="layout/header"></div>
 
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Composite  description
+        </div>
 
-        <div th:insert="layout/footer"></div>
-    </body>
+        <div class="panel-body text-justify">
+
+            Define an abstract base class (Component) that specifies the behavior that needs to be exercised uniformly across all primitive and composite objects. Subclass the Primitive and Composite classes off of the Component class. Each Composite object "couples" itself only to the abstract type Component as it manages its "children".
+
+            Use this pattern whenever you have "composites that contain components, each of which could be a composite".
+
+            Child management methods [e.g. addChild(), removeChild()] should normally be defined in the Composite class. Unfortunately, the desire to treat Primitives and Composites uniformly requires that these methods be moved to the abstract Component class. See the "Opinions" section below for a discussion of "safety" versus "transparency" issues.
+            <div class="panel-footer text-center">
+                <img src="https://sourcemaking.com/files/v2/content/patterns/Composite.png "/>
+            </div>
+
+            <div class="panel-footer">
+                <small>
+                    Source:
+                    <a href="https://sourcemaking.com/design_patterns/composite">
+                        https://sourcemaking.com/design_patterns/composite
+                    </a>
+
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="layout/footer"></div>
+</body>
 </html>

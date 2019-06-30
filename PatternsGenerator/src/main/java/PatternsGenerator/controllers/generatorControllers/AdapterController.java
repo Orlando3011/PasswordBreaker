@@ -18,7 +18,7 @@ public class AdapterController {
     @Autowired
     private AdapterGenerator adapterGenerator;
 
-    private void createAdapter() {
+    private void CreateAdapter() {
         pattern.setAreCommentsIncluded(true);
         pattern.setName("AdapterExample");
         adapterGenerator.setPattern(pattern);
@@ -29,10 +29,7 @@ public class AdapterController {
         adapterGenerator.setMethodReturn("int");
     }
 
-    @GetMapping("/adapter")
-    public String ShowAdapterPage(Model model) throws IOException {
-        this.createAdapter();
-
+    private void SendAdapterToModel(Model model) throws IOException {
         model.addAttribute("interface", adapterGenerator.GenerateInterface());
         model.addAttribute("firstClass", adapterGenerator.GenerateFirstClass());
         model.addAttribute("secondClass", adapterGenerator.GenerateSecondClass());
@@ -46,7 +43,12 @@ public class AdapterController {
         model.addAttribute("methodParameters", this.adapterGenerator.getMethodParameters());
         model.addAttribute("methodReturn", this.adapterGenerator.getMethodReturn());
         model.addAttribute("areCommentsIncluded", this.pattern.getAreCommentsIncluded());
+    }
 
+    @GetMapping("/adapter")
+    public String ShowAdapterPage(Model model) throws IOException {
+        this.CreateAdapter();
+        this.SendAdapterToModel(model);
         return "adapter";
     }
 
@@ -69,18 +71,6 @@ public class AdapterController {
         adapterGenerator.setMethodParameters(methodParameters);
         adapterGenerator.setMethodReturn(methodReturn);
 
-        model.addAttribute("interface", adapterGenerator.GenerateInterface());
-        model.addAttribute("firstClass", adapterGenerator.GenerateFirstClass());
-        model.addAttribute("secondClass", adapterGenerator.GenerateSecondClass());
-        model.addAttribute("firstAdapter", adapterGenerator.GenerateFirstAdapter());
-        model.addAttribute("secondAdapter", adapterGenerator.GenerateSecondAdapter());
-
-        model.addAttribute("adapterName", this.pattern.getName());
-        model.addAttribute("firstClassName", this.adapterGenerator.getFirstClassName());
-        model.addAttribute("secondClassName", this.adapterGenerator.getSecondClassName());
-        model.addAttribute("methodName", this.adapterGenerator.getMethodName());
-        model.addAttribute("methodParameters", this.adapterGenerator.getMethodParameters());
-        model.addAttribute("methodReturn", this.adapterGenerator.getMethodReturn());
-        model.addAttribute("areCommentsIncluded", this.pattern.getAreCommentsIncluded());
+        this.SendAdapterToModel(model);
     }
 }

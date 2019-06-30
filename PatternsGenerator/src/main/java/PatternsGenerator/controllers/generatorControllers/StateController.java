@@ -18,7 +18,7 @@ public class StateController {
     @Autowired
     private StateGenerator stateGenerator;
 
-    private void createState() {
+    private void CreateState() {
         pattern.setAreCommentsIncluded(true);
         pattern.setName("StateExample");
         stateGenerator.setPattern(pattern);
@@ -27,9 +27,7 @@ public class StateController {
         stateGenerator.MenageSubclasses("FirstState,SecondState,ThirdState");
     }
 
-    @GetMapping("/state")
-    public String ShowStateage(Model model) throws IOException {
-        this.createState();
+    private void SendStateToModel(Model model) throws IOException {
         model.addAttribute("stateName", pattern.getName());
         model.addAttribute("methodName", stateGenerator.getChangeStateMethiod());
         model.addAttribute("className", stateGenerator.getClassName());
@@ -39,6 +37,12 @@ public class StateController {
         model.addAttribute("state", stateGenerator.GenerateState());
         model.addAttribute("class", stateGenerator.GenerateClassWithState());
         model.addAttribute("stateSubclasses", stateGenerator.GenerateStateSubclasses());
+    }
+
+    @GetMapping("/state")
+    public String ShowStateage(Model model) throws IOException {
+        this.CreateState();
+        this.SendStateToModel(model);
         return "state";
     }
 
@@ -57,14 +61,6 @@ public class StateController {
         stateGenerator.setClassName(className);
         stateGenerator.MenageSubclasses(subclasses);
 
-        model.addAttribute("stateName", pattern.getName());
-        model.addAttribute("methodName", stateGenerator.getChangeStateMethiod());
-        model.addAttribute("className", stateGenerator.getClassName());
-        model.addAttribute("subclasses", stateGenerator.SubclassesToStrings());
-        model.addAttribute("areCommentsIncluded", pattern.getAreCommentsIncluded());
-
-        model.addAttribute("state", stateGenerator.GenerateState());
-        model.addAttribute("class", stateGenerator.GenerateClassWithState());
-        model.addAttribute("stateSubclasses", stateGenerator.GenerateStateSubclasses());
+        this.SendStateToModel(model);
     }
 }

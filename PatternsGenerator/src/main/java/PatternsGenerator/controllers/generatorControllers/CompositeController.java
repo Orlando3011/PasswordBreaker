@@ -18,7 +18,7 @@ public class CompositeController {
     @Autowired
     private CompositeGenerator compositeGenerator;
 
-    private void createComposite() {
+    private void CreateComposite() {
         pattern.setAreCommentsIncluded(true);
         pattern.setName("CompositeExample");
         compositeGenerator.setPattern(pattern);
@@ -26,10 +26,7 @@ public class CompositeController {
         compositeGenerator.MenageSubclasses("Class1,Class2,Class3");
     }
 
-
-    @GetMapping("/composite")
-    public String ShowCompositePage(Model model) throws IOException {
-        this.createComposite();
+    private void SendCompositeToModel(Model model) throws IOException {
         model.addAttribute("compositeName", pattern.getName());
         model.addAttribute("interfaceName", compositeGenerator.getInterfaceName());
         model.addAttribute("subclasses", compositeGenerator.SubclassesToStrings());
@@ -38,6 +35,13 @@ public class CompositeController {
         model.addAttribute("composite", compositeGenerator.GenerateComposite());
         model.addAttribute("interface", compositeGenerator.GenerateInterface());
         model.addAttribute("subclassesCode", compositeGenerator.GenerateSubclasses());
+    }
+
+
+    @GetMapping("/composite")
+    public String ShowCompositePage(Model model) throws IOException {
+        this.CreateComposite();
+        this.SendCompositeToModel(model);
         return "composite";
     }
 
@@ -55,14 +59,7 @@ public class CompositeController {
         compositeGenerator.setInterfaceName(interfaceName);
         compositeGenerator.MenageSubclasses(subclasses);
 
-        model.addAttribute("compositeName", pattern.getName());
-        model.addAttribute("interfaceName", compositeGenerator.getInterfaceName());
-        model.addAttribute("subclasses", compositeGenerator.SubclassesToStrings());
-        model.addAttribute("areCommentsIncluded", pattern.getAreCommentsIncluded());
-
-        model.addAttribute("composite", compositeGenerator.GenerateComposite());
-        model.addAttribute("interface", compositeGenerator.GenerateInterface());
-        model.addAttribute("subclassesCode", compositeGenerator.GenerateSubclasses());
+        this.SendCompositeToModel(model);
     }
 }
 

@@ -52,13 +52,17 @@ public class SingletonController {
         return fieldChecked;
     }
 
-    @GetMapping("/singleton")
-    public String ShowSingletonPage(Model model) throws IOException {
-        this.CreateSingleton();
+    private void SendSingletonToModel(Model model) throws IOException {
         model.addAttribute("code", this.singletonGenerator.GenerateSingletonClass());
         model.addAttribute("singletonName", this.singletonGenerator.getPattern().getName());
         model.addAttribute("singletonType", this.ChooseSingletonVersion());
         model.addAttribute("areCommentsIncluded", this.ChooseIfCommentsAreIncluded());
+    }
+
+    @GetMapping("/singleton")
+    public String ShowSingletonPage(Model model) throws IOException {
+        this.CreateSingleton();
+        this.SendSingletonToModel(model);
         return "singleton";
     }
 
@@ -87,9 +91,6 @@ public class SingletonController {
         pattern.setName(className);
         singletonGenerator.setPattern(pattern);
 
-        model.addAttribute("code", singletonGenerator.GenerateSingletonClass());
-        model.addAttribute("singletonName", this.singletonGenerator.getPattern().getName());
-        model.addAttribute("singletonType", this.ChooseSingletonVersion());
-        model.addAttribute("areCommentsIncluded", this.ChooseIfCommentsAreIncluded());
+        this.SendSingletonToModel(model);
     }
 }

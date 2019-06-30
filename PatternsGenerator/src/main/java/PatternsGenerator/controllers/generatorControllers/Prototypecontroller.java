@@ -19,7 +19,7 @@ public class Prototypecontroller {
     @Autowired
     private PrototypeGenerator prototypeGenerator;
 
-    private void createPrototype() {
+    private void CreatePrototype() {
         pattern.setAreCommentsIncluded(true);
         pattern.setName("PrototypeExample");
         prototypeGenerator.setPattern(pattern);
@@ -28,9 +28,7 @@ public class Prototypecontroller {
         prototypeGenerator.setCopyMethodName("MakePrototypeCopy");
     }
 
-    @GetMapping("/prototype")
-    public String ShowPrototypPage(Model model) throws IOException {
-        this.createPrototype();
+    private void SendPrototypeToModel(Model model) throws IOException {
         model.addAttribute("prototype", this.prototypeGenerator.GeneratePrototypeClass());
         model.addAttribute("client", this.prototypeGenerator.GenerateClientClass());
 
@@ -39,6 +37,12 @@ public class Prototypecontroller {
         model.addAttribute("instanceName", this.prototypeGenerator.getInstanceName());
         model.addAttribute("copyMethodName", this.prototypeGenerator.getCopyMethodName());
         model.addAttribute("areCommentsIncluded", this.prototypeGenerator.getPattern().getAreCommentsIncluded());
+    }
+
+    @GetMapping("/prototype")
+    public String ShowPrototypPage(Model model) throws IOException {
+        this.CreatePrototype();
+        this.SendPrototypeToModel(model);
         return "prototype";
     }
 
@@ -57,14 +61,8 @@ public class Prototypecontroller {
         prototypeGenerator.setInstanceName(instanceName);
         prototypeGenerator.setCopyMethodName(copyMethodName);
 
-        model.addAttribute("prototype", this.prototypeGenerator.GeneratePrototypeClass());
-        model.addAttribute("client", this.prototypeGenerator.GenerateClientClass());
-        model.addAttribute("prototypeName", this.prototypeGenerator.getPattern().getName());
-        model.addAttribute("clientName", this.prototypeGenerator.getClientName());
-        model.addAttribute("instanceName", this.prototypeGenerator.getInstanceName());
-        model.addAttribute("copyMethodName", this.prototypeGenerator.getCopyMethodName());
-        model.addAttribute("areCommentsIncluded", this.prototypeGenerator.getPattern().getAreCommentsIncluded());
-    }
+        this.SendPrototypeToModel(model);
+ }
 
 
 }
